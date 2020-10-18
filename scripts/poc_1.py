@@ -11,11 +11,14 @@ from geopy.exc import GeocoderTimedOut
 from geopy.geocoders import Nominatim
 
 
-PATH=r'..\data'
+PATH=os.path.abspath(os.path.join('.', os.pardir))
 pytrend = TrendReq()
 
 # st.set_option('wideMode', True)
 # st.beta_set_page_config()
+
+
+
 st.beta_set_page_config(layout="wide")
 
 def find_lat_long(df):
