@@ -14,6 +14,8 @@ from geopy.geocoders import Nominatim
 PATH=r'..\data'
 pytrend = TrendReq()
 
+st.set_option('wideMode' , True)
+
 
 def find_lat_long(df):
     # declare an empty list to store
