@@ -11,7 +11,7 @@ from geopy.exc import GeocoderTimedOut
 from geopy.geocoders import Nominatim
 
 
-PATH=os.path.abspath(os.path.join('.', os.pardir,'data'))
+PATH=os.path.abspath(os.path.join('.','data'))
 pytrend = TrendReq()
 
 # st.set_option('wideMode', True)
