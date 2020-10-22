@@ -281,7 +281,7 @@ def prepare_trend_data(kw_list,with_cat_code=True):
 
     interest_by_timeDF = pytrend.interest_over_time().reset_index()
     if with_cat_code:
-        with open("../country_code_mapper.json",'r') as f:
+        with open("country_code_mapper.json",'r') as f:
             mapper=json.load(f)
         interest_by_regionDF['country_code']=interest_by_regionDF['geoName'].map(mapper)
     return interest_by_regionDF,interest_by_timeDF
