@@ -70,6 +70,7 @@ def find_lat_long(df):
             latitude.append(np.nan)
             longitude.append(np.nan)
     return latitude, longitude
+
 def data_docs():
 
     st.title("How to create a Persona")
@@ -110,6 +111,7 @@ def data_docs():
 
     )
 
+
 @st.cache
 def gettwitterFrds(actor):
     twt_path = os.path.join(PATH, actor, 'twitter')
@@ -136,16 +138,22 @@ def gettwitterMeta(actor):
 
 def prepare_twitter_stats(actor):
     st.title("Actors persona using Twitter Data")
+
     actor = st.selectbox(
         "Choose Actor", os.listdir(PATH)
     )
+
     # st.subheader(f"Preparing stats for {actor}")
     user=gettwitterMeta(actor)
+
     st.header("Twitter Analytics")
+
     cols=st.beta_columns(2)
     with cols[0]:
         st.subheader(user['screen_name'])
+
         st.image(user['profile_image_url'])
+
         st.subheader("Tag Line : \n"+user['description'])
     with cols[1]:
         st.image(user['profile_banner_url'],use_column_width=True)
@@ -153,15 +161,23 @@ def prepare_twitter_stats(actor):
         st.subheader(f"Friends count: {user['friends_count']}")
 
     frds=gettwitterFrds(actor)
+
     st.subheader("Followers in various Location")
-    st.plotly_chart(px.scatter(frds,x='location',y='followers_count',size='followers_count',color='location'),
+
+
+    st.plotly_chart(
+        px.scatter(frds,x='location',y='followers_count',size='followers_count',color='location'),
                     use_container_width=True)
+
+
     st.subheader("Friends in various Location")
     st.plotly_chart(px.scatter(frds, x='location', y='friends_count', size='friends_count', color='location'),
                     use_container_width=True)
 
     st.header(f"Some Tweets from {actor}")
+
     timeline=gettwitterTimeline(actor)
+
     for text in timeline['text']:
         st.write(text)
 
@@ -171,8 +187,6 @@ def prepare_twitter_stats(actor):
     if show == "Yes":
         columns=st.multiselect("choose Relevant Information",frds.columns.tolist())
         st.table(frds[columns])
-
-
 
     return
 
@@ -251,6 +265,7 @@ def prepare_relevant_data(kw_list):
     relatedqueriesDF = pytrend.related_queries()
     relatedDF = pytrend.related_topics()
     return relatedDF,relatedqueriesDF
+
 @st.cache
 def prepare_trend_data(kw_list,with_cat_code=True):
     """
