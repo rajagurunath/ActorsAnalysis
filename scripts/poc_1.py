@@ -376,7 +376,7 @@ def actors_persona(analysis):
 def comparison():
     st.title("Actors Comparison")
 
-st.sidebar.title("ConnectingARTs 💘")
+st.sidebar.title("InvestTech 💘")
 app_mode = st.sidebar.selectbox("Lets Explore !!!",
     ["About the data", "Actors persona", "Comparison"])
 if app_mode == "About the data":
